@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <!-- The 10.0.19041 Windows SDK projection gives access to Windows' own image (WIC) and media (Media Foundation) codecs. -->
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>KwikKonvert</RootNamespace>
+    <AssemblyName>KwikKonvert</AssemblyName>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <Platforms>x64;ARM64</Platforms>
+    <Platform Condition="'$(Platform)' == '' Or '$(Platform)' == 'AnyCPU'">x64</Platform>
+    <RuntimeIdentifiers>win-x64;win-arm64</RuntimeIdentifiers>
+    <RuntimeIdentifier Condition="'$(RuntimeIdentifier)' == ''">win-$(Platform.ToLowerInvariant())</RuntimeIdentifier>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets\Branding\KwikKonvert.ico</ApplicationIcon>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <ApplicationVisualStyles>true</ApplicationVisualStyles>
+
+    <Product>KwikKonvert</Product>
+    <AssemblyTitle>KwikKonvert</AssemblyTitle>
+    <Description>KwikKonvert - such files. many formats. wow.</Description>
+    <Version>1.1.0</Version>
+    <Company>KwikKonvert</Company>
+  </PropertyGroup>
+
+  <!-- build.bat publishes with -p:KwikSingleFile=true to get one self-contained KwikKonvert.exe. -->
+  <PropertyGroup Condition="'$(KwikSingleFile)' == 'true'">
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <DebugType>none</DebugType>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KwikKonvert.Core\KwikKonvert.Core.csproj" />
+  </ItemGroup>
+
+  <!-- Embedded, so the exe needs no Assets folder next to it. -->
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Doge\doge.gif" LogicalName="KwikKonvert.Assets.doge.gif" />
+    <EmbeddedResource Include="Assets\Doge\doge-still.png" LogicalName="KwikKonvert.Assets.doge-still.png" />
+    <EmbeddedResource Include="Assets\Branding\KwikKonvert.ico" LogicalName="KwikKonvert.Assets.KwikKonvert.ico" />
+  </ItemGroup>
+
+</Project>
