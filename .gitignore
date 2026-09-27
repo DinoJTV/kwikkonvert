@@ -1,0 +1,28 @@
+bin/
+obj/
+publish/
+.vs/
+*.user
+*.suo
+AppPackages/
+BundleArtifacts/
+*.kwikpart
+
+# Local secrets and development output
+*.key
+.env
+convertio*.txt
+*.log
+*.pdb
+/KwikKonvert.exe
+/KwikKonvert-app/
+TestResults/
+.DS_Store
+Thumbs.db
+
+# User-specific app state; never ship this with a release
+AppData/
+LocalAppData/
+settings.json
+preferences.json
+history.json
