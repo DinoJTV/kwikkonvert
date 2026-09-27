@@ -1,0 +1,38 @@
+name: Bug report
+description: Report a problem with conversion, compression or the interface.
+title: '[Bug] '
+labels: [bug]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Include the expected result and any exact error message.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include the input format, output format and compression settings. Use non-sensitive samples.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: KwikKonvert version
+      placeholder: '1.1.0'
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version and architecture
+      placeholder: 'Windows 11, x64'
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Screenshots or additional details
+      description: Remove personal information from screenshots and sample files before attaching them.

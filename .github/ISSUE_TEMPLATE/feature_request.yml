@@ -1,0 +1,19 @@
+name: Feature request
+description: Suggest an improvement to KwikKonvert.
+title: '[Feature] '
+labels: [enhancement]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: What would you like to do?
+      description: Explain the task or problem this would help with.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Suggested behaviour
+      description: Describe the result you would expect and any alternatives you have tried.
+    validations:
+      required: true
