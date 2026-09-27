@@ -1,0 +1,30 @@
+name: Build and tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    name: Windows x64
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Run core tests
+        run: dotnet run --project tests/KwikKonvert.Core.Tests -c Release
+      - name: Publish self-contained executable
+        run: dotnet publish src/KwikKonvert/KwikKonvert.csproj -c Release -p:Platform=x64 -r win-x64 --self-contained true -p:KwikSingleFile=true -o publish/win-x64
+      - name: Upload Windows build
+        uses: actions/upload-artifact@v4
+        with:
+          name: KwikKonvert-windows-x64
+          path: publish/win-x64/KwikKonvert.exe
+          if-no-files-found: error
